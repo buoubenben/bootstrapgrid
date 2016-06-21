@@ -1,0 +1,79 @@
+<div class="container">
+    <section style="width: 1076px">
+        <section>
+            <table class="table table-striped table-bordered  table-condensed table-hover">
+                <thead id="thead">
+                <tr>
+                    <th><input id='checkall' ng-model="selectAll" ng-click="all(selectAll,items)" type="checkbox"/></th>
+                    <th>序号</th>
+                    <th ng-repeat="(key,head) in headers" style="width:{{head.CustomWidth}}" ng-model="head">
+                        <div ng-click="head.editing=true" style="width: 70%;float: left" ng-show="!head.editing">
+                            {{head.displayName}}
+                        </div>
+                        <div style="width: 20px;height: 20px;float: right;text-align: center" ng-click="sort.toggle(head)" ng-show="!head.editing">
+                            <i ng-if="head.filterData === sort.head && sort.direction"
+                                    class="glyphicon {{sort.direction|orderClass}}"></i>
+
+                        </div>
+                        <input type="text" class="form-control" ng-model="filter.$" set-focus="{{head.editing}}"
+                               ng-show="head.editing" ng-blur="head.editing=!head.editing"/>
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                <tr ng-repeat="item in items|filter:filter|orderBy:sort.head:sort.direction===-1|paging:page.index:page.size">
+                    <td>
+                        <input ng-model="isChose" ng-click="chk(item,isChose)" ng-checked="selectAll" name='checkbox'
+                               type="checkbox"/>
+                    </td>
+                    <td>{{$index+1+(page.index-1)*page.size}}</td>
+                    <!--<td>{{items.length-(page.size*(page.index-1))-$index}}</td>-->
+                    <td ng-repeat="f in fields">
+                        <!-- TEXT类型 且可编辑-->
+                        <div ng-if="f.field.edit" contentEditable>{{item[f.field.data]}}</div>
+                        <!-- select类型 且不可编辑-->
+                        <div ng-if="!f.field.edit&&f.field.cellType=='SELECT'" ng-click="isTrue=!isTrue">
+                            <select set-focus="{{isTrue?true:''}}" name="mySelect" ng-show="isShow"
+                                    ng-blur="isShow=!isShow"
+                                    ng-options="option.name for option in selectOption.availableOptions track by option.id"
+                                    ng-model="item[f.field.data].selectedOption">
+                            </select>
+
+                            <div ng-click="isShow=!isShow" ng-show="!isShow">{{item[f.field.data].selectedOption.name}}
+                            </div>
+                        </div>
+                        <!-- DATE类型 且不可编辑-->
+                        <div ng-if="!f.field.edit&&f.field.cellType=='DATE'" ng-click="isTrue=true">
+                            <input set-focus="{{isTrue}}" type="date" name="input" ng-model="item[f.field.data]"
+                                   format-date
+                                   ng-show="isShow" ng-blur="isShow=!isShow"
+                                   placeholder="YYYY/MM/dd" required/>
+
+                            <div ng-click="isShow=!isShow" ng-show="!isShow">{{item[f.field.data]||item.date}}</div>
+                        </div>
+                        <!-- TEXT类型 且不可编辑-->
+                        <div ng-if="!f.field.edit&&f.field.cellType=='TEXT'">{{item[f.field.data]}}</div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <!-- 分页-->
+        <section class="row">
+            <div class="col-md-2">
+                <select ng-model="page.size" class="form-control" title="每页条目数"
+                        ng-options="pageSize for pageSize in [5, 10,15]">
+                </select>
+            </div>
+            <div class="col-md-10">
+                <uib-pagination total-items="items|filter:filter|size"
+                                first-text="首页" last-text="尾页"
+                                previous-text="上一页" next-text="下一页"
+                                items-per-page="page.size" boundary-links="true"
+                                ng-model="page.index" max-size="10"
+                                force-ellipses="true" num-pages="numPages"
+                                class="pagination pull-right"></uib-pagination>
+            </div>
+        </section>
+    </section>
+</div>

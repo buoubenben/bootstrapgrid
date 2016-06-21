@@ -1,0 +1,58 @@
+[
+  {
+    "field": {
+      "data": "age",
+      "edit": false,
+      "cellType": "TEXT"
+    },
+    "displayName": "Age",
+    "filterData": "age",
+    "cellType": "TEXT",
+    "CustomWidth":"100px"
+
+  },
+  {
+    "field": {
+      "data": "name",
+      "edit": true,
+      "cellType": "TEXT"
+    },
+    "displayName": "Full Name",
+    "filterData": "name",
+    "cellType": "TEXT",
+    "CustomWidth":"200px"
+  },
+  {
+    "field": {
+      "data": "money",
+      "edit": false,
+      "cellType": "TEXT"
+    },
+    "displayName": "Money",
+    "filterData": "money",
+    "cellType": "TEXT",
+    "CustomWidth":"150px"
+  },
+  {
+    "field": {
+      "data": "sex",
+      "edit": false,
+      "cellType": "SELECT"
+    },
+    "displayName": "Sex",
+    "filterData": "sex",
+    "cellType": "SELECT",
+    "CustomWidth":"150px"
+  },
+  {
+    "field": {
+      "data": "birth",
+      "edit": false,
+      "cellType": "DATE"
+    },
+    "displayName": "Birthday",
+    "filterData": "birth",
+    "cellType": "DATE",
+    "CustomWidth":"300px"
+  }
+]

@@ -1,0 +1,17 @@
+{
+"repeatSelect": null,
+"availableOptions": [
+{
+"id": 1,
+"name": "male"
+},
+{
+"id": 2,
+"name": "remale"
+}
+],
+"selectedOption": {
+"id": "1",
+"name": "male"
+}
+}

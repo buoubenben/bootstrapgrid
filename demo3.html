@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="costApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <title>demo3</title>
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="css/demo.css"/>
+    <!--<link rel="stylesheet" href="css/jquery-ui.css"/>-->
+    <script src="ngjs/jquery-1.11.3.js"></script>
+    <!--<script src="ngjs/jquery-ui.js"></script>-->
+    <script src="ngjs/angular.js"></script>
+    <script src="ngjs/app.js"></script>
+    <script src="ngjs/controller.js"></script>
+    <script src="ngjs/directive.js"></script>
+    <script src="ngjs/services.js"></script>
+    <script src="ngjs/filters.js"></script>
+    <script src="ngjs/ui-bootstrap-tpls-1.3.3.js"></script>
+    <!--<script src="ngjs/date.js"></script>-->
+</head>
+<body>
+<div ng-controller="mTableCtrl" class="container" >
+    <section class="row">
+        <div class="col-xs-2 col-md-1">
+            <input ng-click="add()" add-btn class="btn btn-success" type="button" id="addrow" value="增加行"/>
+        </div>
+        <div class="col-xs-2 col-md-1">
+            <input ng-click="del()" class="btn btn-danger" type="button" id="deleterow" value="删除行"/>
+        </div>
+    </section>
+    <m-table></m-table>
+</div>
+
+</body>
+</html>
